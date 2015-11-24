@@ -8,11 +8,12 @@ import java.sql.Statement;
 public class SelectQueries {
 
 	public static void main(String args[]) {
+		String databaseName = "jdbc:sqlite:CSRSDataBase.db";
 		Connection c = null;
 		Statement stmt = null;
 		try {
 			Class.forName("org.sqlite.JDBC");
-			c = DriverManager.getConnection("jdbc:sqlite:scrs.db");
+			c = DriverManager.getConnection(databaseName);
 			c.setAutoCommit(false);
 			System.out.println("Opened database successfully");
 

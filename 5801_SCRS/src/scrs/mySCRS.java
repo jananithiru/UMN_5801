@@ -4,5 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface mySCRS {
-	List<ArrayList<String>> queryStudentPersonalData(ShibbolethAuth.Token token, int studentID); 
+	DBCoordinator dbCoordinator = new DBCoordinator(); 
+	List<ArrayList<String>> queryStudentPersonalData(ShibbolethAuth.Token token, int studentID);
 }

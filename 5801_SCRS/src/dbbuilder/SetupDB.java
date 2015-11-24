@@ -4,12 +4,13 @@ import java.sql.DriverManager;
 import java.sql.Statement;
 
 public class SetupDB {
+	static String databaseName = "jdbc:sqlite:CSRSDataBase.db";
 	public static void createStudentTable() {
 		Connection c = null;
 		Statement stmt = null;
 		try {
 			Class.forName("org.sqlite.JDBC");
-			c = DriverManager.getConnection("jdbc:sqlite:scrs.db");
+			c = DriverManager.getConnection(databaseName);
 			System.out.println("Opened database successfully");
 
 			stmt = c.createStatement();
@@ -39,7 +40,7 @@ public class SetupDB {
 		Statement stmt = null;
 		try {
 			Class.forName("org.sqlite.JDBC");
-			c = DriverManager.getConnection("jdbc:sqlite:scrs.db");
+			c = DriverManager.getConnection(databaseName);
 			System.out.println("Opened database successfully");
 
 			stmt = c.createStatement();
@@ -65,7 +66,7 @@ public class SetupDB {
 		Statement stmt = null;
 		try {
 			Class.forName("org.sqlite.JDBC");
-			c = DriverManager.getConnection("jdbc:sqlite:scrs.db");
+			c = DriverManager.getConnection(databaseName);
 			System.out.println("Opened database successfully");
 
 			stmt = c.createStatement();
@@ -93,7 +94,7 @@ public class SetupDB {
 		Statement stmt = null;
 		try {
 			Class.forName("org.sqlite.JDBC");
-			c = DriverManager.getConnection("jdbc:sqlite:scrs.db");
+			c = DriverManager.getConnection(databaseName);
 			System.out.println("Opened database successfully");
 
 			stmt = c.createStatement();
@@ -126,7 +127,7 @@ public class SetupDB {
 		Statement stmt = null;
 		try {
 			Class.forName("org.sqlite.JDBC");
-			c = DriverManager.getConnection("jdbc:sqlite:scrs.db");
+			c = DriverManager.getConnection(databaseName);
 			System.out.println("Opened database successfully");
 
 			stmt = c.createStatement();
@@ -151,7 +152,7 @@ public class SetupDB {
 		Statement stmt = null;
 		try {
 			Class.forName("org.sqlite.JDBC");
-			c = DriverManager.getConnection("jdbc:sqlite:scrs.db");
+			c = DriverManager.getConnection(databaseName);
 			System.out.println("Opened database successfully");
 
 			stmt = c.createStatement();
@@ -174,7 +175,7 @@ public class SetupDB {
 		Statement stmt = null;
 		try {
 			Class.forName("org.sqlite.JDBC");
-			c = DriverManager.getConnection("jdbc:sqlite:scrs.db");
+			c = DriverManager.getConnection(databaseName);
 			System.out.println("Opened database successfully");
 
 			stmt = c.createStatement();
@@ -196,12 +197,12 @@ public class SetupDB {
 	
 	
 	public static void main(String args[]) {
-//		createStudentTable();
-//		createAdministratorTable();
-//		createInstructorTable();
-//		createCourseTable();
-//		createStudentAndCourseTable();
-//		createInstructorAndCourseTable();
+		createStudentTable();
+		createAdministratorTable();
+		createInstructorTable();
+		createCourseTable();
+		createStudentAndCourseTable();
+		createInstructorAndCourseTable();
 		createShibbolethAuthTable();
 	}
 

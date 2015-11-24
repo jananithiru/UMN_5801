@@ -12,8 +12,7 @@ public class TestSCRS {
 		//fail("Not yet implemented");
 		mySCRS testScrs = new SCRSImpl(); //TODO: Change this to SCRS from mySCRS
 		ShibbolethAuth sbAuth = new ShibbolethAuth(); 
-		Token myToken = sbAuth.tokenGenerator("alice002","mypassword");
+		Token myToken = sbAuth.tokenGenerator("alice001", "mypassword");
 		System.out.println(testScrs.queryStudentPersonalData(myToken, myToken.id));
 	}
-
 }

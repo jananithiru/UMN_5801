@@ -3,6 +3,7 @@ import java.sql.Date;
 
 public class Student {
 	int id;
+	
 	String firstname;
 	String lastname;
 	Date dateofbirth;
@@ -13,9 +14,10 @@ public class Student {
 	int credits;
 	String department;
 
-	public Student(String firstname, String lastname, Date dateofbirth, String type, String gender,
+	public Student(int id, String firstname, String lastname, Date dateofbirth, String type, String gender,
 			String advisor, String plan, int credits, String department) {
 		super();
+		this.id = id;
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.dateofbirth = dateofbirth;
@@ -30,7 +32,11 @@ public class Student {
 	public int getId() {
 		return id;
 	}
-
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+	
 	public String getFirstname() {
 		return firstname;
 	}

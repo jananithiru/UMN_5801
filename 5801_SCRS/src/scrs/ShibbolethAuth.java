@@ -1,14 +1,10 @@
 package scrs;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class ShibbolethAuth {
-	
 	static public class Token{
 		enum RoleType{
 			STUDENT,
@@ -23,9 +19,9 @@ public class ShibbolethAuth {
 			this.timeStamp = timeStamp;
 		}
 		
-		final int id; //TODO: Changed this to public 
+		final int id;
 		final RoleType type;
-		final String timeStamp;	
+		final String timeStamp;
 	}
 	
 	private DBCoordinator dbCoordinator = new DBCoordinator();
@@ -58,8 +54,7 @@ public class ShibbolethAuth {
 		if(TokenAuth(newToken)) return newToken;
 		else return undefinedToken;
 	}
-	
-	private boolean TokenAuth(Token token) {
+	private boolean TokenAuth(Token token) { 
 		List<ArrayList<Object>> tmp;
 		if(token.type == Token.RoleType.STUDENT) {
 			tmp = dbCoordinator.queryData("SELECT * FROM STUDENT WHERE ID=\"" + token.id + "\"");
