@@ -1,9 +1,14 @@
+package scrs;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class ShibbolethAuth {
+	
 	static public class Token{
 		enum RoleType{
 			STUDENT,
@@ -18,9 +23,9 @@ public class ShibbolethAuth {
 			this.timeStamp = timeStamp;
 		}
 		
-		final int id;
+		final int id; //TODO: Changed this to public 
 		final RoleType type;
-		final String timeStamp;
+		final String timeStamp;	
 	}
 	
 	private DBCoordinator dbCoordinator = new DBCoordinator();

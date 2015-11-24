@@ -196,12 +196,12 @@ public class SetupDB {
 	
 	
 	public static void main(String args[]) {
-		createStudentTable();
-		createAdministratorTable();
-		createInstructorTable();
-		createCourseTable();
-		createStudentAndCourseTable();
-		createInstructorAndCourseTable();
+//		createStudentTable();
+//		createAdministratorTable();
+//		createInstructorTable();
+//		createCourseTable();
+//		createStudentAndCourseTable();
+//		createInstructorAndCourseTable();
 		createShibbolethAuthTable();
 	}
 

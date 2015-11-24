@@ -1,3 +1,4 @@
+package scrs;
 import java.sql.Date;
 
 public class Student {
