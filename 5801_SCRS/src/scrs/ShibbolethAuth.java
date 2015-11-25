@@ -22,9 +22,13 @@ public class ShibbolethAuth {
 		final int id;
 		final RoleType type;
 		final String timeStamp;
-	}
+		public RoleType getRoleType() { 
+			return this.type;
+		}
+	}//end of token 
 	
 	private DBCoordinator dbCoordinator = new DBCoordinator();
+	//public Token = new Token()
 	
 	public Token tokenGenerator(String x500, String password) {
 		String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
@@ -54,7 +58,7 @@ public class ShibbolethAuth {
 		if(TokenAuth(newToken)) return newToken;
 		else return undefinedToken;
 	}
-	private boolean TokenAuth(Token token) { 
+	public boolean TokenAuth(Token token) { 
 		List<ArrayList<Object>> tmp;
 		if(token.type == Token.RoleType.STUDENT) {
 			tmp = dbCoordinator.queryData("SELECT * FROM STUDENT WHERE ID=\"" + token.id + "\"");
