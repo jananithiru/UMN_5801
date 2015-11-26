@@ -5,22 +5,38 @@ import java.util.ArrayList;
 import java.util.List;
 import scrs.ShibbolethAuth.Token;
 import java.util.Date;
+import java.util.Iterator;
 
-public class SCRSImpl implements SCRS {
+public class SCRSImpl implements mySCRS {
 	
 	public List<ArrayList<String>> queryStudentPersonalData(Token token, int studentID) {
-		//TODO: Done. IN higher class if this session belongs to a student then query student personal data 
+		//TODO: //Assuming the request is already verified as student. 
+		// Done. IN higher class if this session belongs to a student then query student personal data 
 		// iff] student is present in the student tb]\\avle, 
 		
-		// TODO: Come up with this string escpared corrected 
-		//String sqlStr = "select * '\''"
+		// TODO: Create new DBCoodinator object here or elsewhere ? 
 		DBCoordinator dbcoordinator = new DBCoordinator();
+		
+		// TODO: Come up with this string escaped corrected 
+		String sqlStr = "select * from student where id=" + studentID;
 		
 		List<ArrayList<Object>> objList = dbcoordinator.queryData(sqlStr);
 		
-		//TODO: Type case from Object to String 
+		List<ArrayList <String>> result = new ArrayList<ArrayList<String>>();
 		
-		return null;
+		//TODO: Type case from Object to String
+		Iterator<ArrayList<Object>> outerIter = objList.iterator();
+	        while(outerIter.hasNext()){
+	        	ArrayList <String> metaRes = new ArrayList<String>(); 
+	        	Iterator<Object> innerIter = outerIter.next().iterator();
+	        	while(innerIter.hasNext()){
+	        		metaRes.add(innerIter.next().toString());
+	        		//System.out.println(innerIter.next());
+	        	}
+	        	result.add(metaRes);
+	        }
+	        
+		return result;
 	}
 
 	@Override
@@ -34,127 +50,4 @@ public class SCRSImpl implements SCRS {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	@Override
-	public List<ArrayList<String>> queryClass(int courseID, String courseName, String location, String term,
-			String department, String classType, String instructorName) {
-				
-		// TODO: Come up with this string escpared corrected 
-		DBCoordinator dbcoordinator = new DBCoordinator();
-			
-		//"select all class which match my criteria"
-		
-		//String sqlStr = "select * rom classe hwere course '\''"
-		
-		List<ArrayList<Object>> objList = dbcoordinator.queryData(sqlStr);
-				
-		//TODO: Type case from Object to String 
-				
-		
-		
-		
-		
-		
-		return null;
-	}
-
-	@Override
-	public List<ArrayList<String>> queryStudentRegistrationHistory(Token token, int studentID) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<ArrayList<String>> queryAdminPersonalData(Token token) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<ArrayList<String>> queryInstructor(Token token, int instructorID) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean studentAddClass(Token token, int courseID, String grading, String courseTerm) {
-//		// TODO Auto-generated method stub
-//
-//		// TODO: Come up with this string escpared corrected 
-//		DBCoordinator dbcoordinator = new DBCoordinator();
-//			
-//		//"select all class which match my criteria"
-//		// query for class data 
-//		//String sqlStr = "select * rom classe hwere course '\''"
-//		
-//		List<ArrayList<Object>> objList = dbcoordinator.queryData(sqlStr);
-//
-//		//calc time frame for those classes 
-//		
-//		calculateTimeFramefromFirstClass(objList[i])
-//		
-//		
-//		if ( today is lesser than time frame)
-//			then insert into data 
-//			// insert sql
-//				dbCooridnator.insert
-//				
-//				else retunr erro
-		
-		
-		//TODO: Type case from Object to String 
-				
-		
-		
-		
-		
-		return false;
-	}
-
-	@Override
-	public boolean studentDropClass(Token token, int courseID) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean studentEditClass(Token token, int courseID, String grading, String courseTerm) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean adminAddClass(Token token, int courseID, String courseName, int courseCredits, String instructor,
-			String firstDay, String lastDay, String classBeginTime, String classEndTime, String weekDays,
-			String location, String type, String prerequisite, String description, String department) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean adminDeleteClass(Token token, int courseID) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean adminEditClass(Token token, int courseID, String courseName, int courseCredits, String instructor,
-			String firstDay, String lastDay, String classBeginTime, String classEndTime, String weekDays,
-			String location, String type, String prerequisite, String description, String department) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean adminAddStudentToClass(Token token, int studentID, int courseID, String grading, String courseTerm) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean adminEditStudentRegisteredClass(Token token, int studentID, int courseID, String grading,
-			String courseTerm) {
-		// TODO Auto-generated method stub
-		return false;
-	}	
 }
