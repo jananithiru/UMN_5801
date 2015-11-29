@@ -41,8 +41,15 @@ public class SCRSImpl implements mySCRS {
 
 	@Override
 	public Token userLogin(String x500, String password) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		ShibbolethAuth sbAuth = new ShibbolethAuth(); 
+		
+		if (x500 == null || password == null)
+			return null; //TODO: Check if we need to throw exceptions 
+		
+		Token myToken = sbAuth.tokenGenerator(x500, password);
+		
+		return myToken;
 	}
 
 	@Override

@@ -19,13 +19,20 @@ public class TestUI{
 		//fail("Not yet implemented");
 		
 		mySCRS testScrs = new SCRSImpl(); //TODO: Change this to SCRS from mySCRS
+		
+		//TODO: Where to create this object since userlogin doesn't accept sb or return sbAuth
+		// This feels wrong to duplicate this. 
+		
 		ShibbolethAuth sbAuth = new ShibbolethAuth(); 
+		
 		// END OF INTIALIZATION
 		
 		//Note: Not doing singup, dirty insert into db, assuming alice0001 exists
-		Token myToken = sbAuth.tokenGenerator("alice001", "mypassword");
+		//Token myToken = sbAuth.tokenGenerator("alice001", "mypassword");
 		
-		if(myToken !=null && sbAuth.TokenAuth(myToken)) 	
+		Token myToken = testScrs.userLogin("alice001", "mypassword");
+		
+		if(myToken !=null && sbAuth.TokenAuth(myToken)) 	// 
 			if(myToken.type == Token.RoleType.STUDENT){ 
 				
 				List<ArrayList<String>> testResult = 
