@@ -13,22 +13,9 @@ public class Student extends Person {
 			return false;
 		}
 		DBCoordinator dbCoordinator = new DBCoordinator();
-		String sqlStr = "select * from course where courseId=" + courseId + " and grading=" + grading
-				+ "and courseTerm=" + courseTerm;
-		List<ArrayList<Object>> courseList = dbCoordinator.queryData(sqlStr);
-		if (courseList == null) {
-			return false;
-		} else {
-			Iterator<ArrayList<Object>> iterator = courseList.iterator();
-			int i = 0;
-			while (iterator.hasNext()) {
-				i++;
-				sqlStr = "insert into course values(" + i + "," + courseId + ",'" + grading + "','" + courseTerm + "')";
-				dbCoordinator.insertData(sqlStr, dataList, typeList);
-			}
-		}
+		String sqlStr = "insert into course values(" + courseId + ",'" + grading + "','" + courseTerm + "')"; //id is autoincrement
+		return dbCoordinator.insertData(sqlStr, dataList, typeList);
 
-		return false;
 		// TODO Auto-generated method stub
 		//
 		// // TODO: Come up with this string escpared corrected

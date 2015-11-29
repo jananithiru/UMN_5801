@@ -6,20 +6,11 @@ public class StudentAndCourseTable {
 	String grading; // A/F or S/N
 	int studentId;
 
-	public StudentAndCourseTable(int id, int courseId, String grading, int studentId) {
+	public StudentAndCourseTable(int courseId, String grading, int studentId) {
 		super();
-		this.id = id;
 		this.courseId = courseId;
 		this.grading = grading;
 		this.studentId = studentId;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public int getCourseId() {

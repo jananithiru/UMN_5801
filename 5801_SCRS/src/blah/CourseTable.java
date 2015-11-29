@@ -16,11 +16,10 @@ public class CourseTable {
 	String prereuisite;
 	String description;
 	String department;
-	String courseTerm; // Fall or Spring
 
 	public CourseTable(int courseId, String name, int credits, Date firstDay, Date lastDay, String classBeginTime,
 			String classEndTime, String routines, String location, String type, String prereuisite, String description,
-			String department, String courseTerm) {
+			String department) {
 		super();
 		this.courseId = courseId;
 		this.name = name;
@@ -35,16 +34,7 @@ public class CourseTable {
 		this.prereuisite = prereuisite;
 		this.description = description;
 		this.department = department;
-		this.courseTerm = courseTerm;
 
-	}
-
-	public String getCourseTerm() {
-		return courseTerm;
-	}
-
-	public void setCourseTerm(String courseTerm) {
-		this.courseTerm = courseTerm;
 	}
 
 	public int getCourseId() {
