@@ -11,6 +11,7 @@ import java.util.Iterator;
 public class SCRSImpl implements mySCRS {
 
 	public List<ArrayList<String>> queryStudentPersonalData(Token token, int studentID) {
+<<<<<<< HEAD
 		// TODO: //Assuming the request is already verified as student.
 		// Done. IN higher class if this session belongs to a student then query
 		// student personal data
@@ -37,10 +38,34 @@ public class SCRSImpl implements mySCRS {
 			}
 			result.add(metaRes);
 		}
+=======
+
+		if (token.type == Token.RoleType.UNDEFINED) {
+			System.out.print(ErrorMessages.invalidCredentials);
+			return null;
+		} else if (token.type == Token.RoleType.ADMIN) {
+			System.out.print(ErrorMessages.incorrectTypeOfAccount);
+			return null;
+		} 
+		
+		DBCoordinator dbcoordinator = new DBCoordinator();
+
+		//	TODO: Come up with this string escaped corrected
+		String sqlStr = SQLStrings.selectAllFromStudent(studentID); 
+		
+		List<ArrayList<Object>> objList = dbcoordinator.queryData(sqlStr);
+		
+		if(objList == null || objList.isEmpty()){
+			System.out.println(ErrorMessages.missingPersonalDataForUser);
+			return null;
+		}
+		
+		List<ArrayList<String>> result = UtilMethods.convertObjListToStringList(objList);
+>>>>>>> master
 
 		return result;
 	}
-
+	
 	@Override
 	public Token userLogin(String x500, String password) {
 
@@ -56,8 +81,30 @@ public class SCRSImpl implements mySCRS {
 
 	@Override
 	public List<ArrayList<String>> queryAdminPersonalData(Token token, int adminID) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		if (token.type == Token.RoleType.UNDEFINED) {
+			System.out.print(ErrorMessages.invalidCredentials);
+			return null;
+		} else if (token.type == Token.RoleType.STUDENT) {
+			System.out.print(ErrorMessages.incorrectTypeOfAccount);
+			return null;
+		}
+		
+		DBCoordinator dbcoordinator = new DBCoordinator();
+		
+		String sqlStr = SQLStrings.selectAllFromAdmin(adminID); 
+		
+		List<ArrayList<Object>> objList = dbcoordinator.queryData(sqlStr);
+
+		if(objList == null || objList.isEmpty()){
+			System.out.println(ErrorMessages.missingPersonalDataForUser);
+			return null;
+		}
+		
+		List<ArrayList<String>> result = UtilMethods.convertObjListToStringList(objList);
+
+		return result;
+
 	}
 	
 	
