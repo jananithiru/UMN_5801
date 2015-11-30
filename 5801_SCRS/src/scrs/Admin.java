@@ -22,7 +22,12 @@ public class Admin extends Person {
 				+ classBeginTime + classEndTime + weekDays + location + type + prerequisite + description + department
 				+ ")";
 		ArrayList<String> dataList = null;
+		
+		
+		
+		
 		ArrayList<PrimitiveDataType> typeList = null;
+		
 		dbcoordinator.insertData(sqlCmd, dataList, typeList);
 
 		return true;
