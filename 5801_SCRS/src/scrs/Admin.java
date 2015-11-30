@@ -22,12 +22,32 @@ public class Admin extends Person {
 				+ classBeginTime + classEndTime + weekDays + location + type + prerequisite + description + department
 				+ ")";
 		ArrayList<String> dataList = null;
-		
-		
-		
-		
+
+		dataList.add(Integer.toString(courseID));
+		dataList.add(courseName);
+		dataList.add(Integer.toString(courseCredits));
+		dataList.add(instructor);
+		dataList.add(firstDay);
+		dataList.add(lastDay);
+		dataList.add(classBeginTime);
+		dataList.add(classEndTime);
+		dataList.add(weekDays);
+		dataList.add(location);
+		dataList.add(type);
+		dataList.add(prerequisite);
+		dataList.add(description);
+		dataList.add(department);
+
 		ArrayList<PrimitiveDataType> typeList = null;
-		
+
+		typeList.add(PrimitiveDataType.INT);
+		typeList.add(PrimitiveDataType.STRING);
+		typeList.add(PrimitiveDataType.INT);
+		for (int i = 0; i < 10; i++) {
+			typeList.add(PrimitiveDataType.STRING);
+
+		}
+
 		dbcoordinator.insertData(sqlCmd, dataList, typeList);
 
 		return true;
@@ -43,7 +63,10 @@ public class Admin extends Person {
 		String sqlCmd = null;
 		sqlCmd = "DELETE DATA FROM COURSETABLE WHERE ID =" + courseID;
 		ArrayList<String> dataList = null;
+		dataList.add(Integer.toString(courseID));
+
 		ArrayList<PrimitiveDataType> typeList = null;
+		typeList.add(PrimitiveDataType.INT);
 		dbcoordinator.deleteData(sqlCmd, dataList, typeList);
 
 		return false;
@@ -67,7 +90,30 @@ public class Admin extends Person {
 				+ "CLASSENDTIME =" + classEndTime + "ROUTINES =" + weekDays + "LOCATION +" + location + "TYPE = " + type
 				+ "PREREQUISITE =" + prerequisite + "DESCRIPTION =" + description + "DEPARTMENT = " + department;
 		ArrayList<String> dataList = null;
+		dataList.add(Integer.toString(courseID));
+		dataList.add(courseName);
+		dataList.add(Integer.toString(courseCredits));
+		dataList.add(instructor);
+		dataList.add(firstDay);
+		dataList.add(lastDay);
+		dataList.add(classBeginTime);
+		dataList.add(classEndTime);
+		dataList.add(weekDays);
+		dataList.add(location);
+		dataList.add(type);
+		dataList.add(prerequisite);
+		dataList.add(description);
+		dataList.add(department);
+
 		ArrayList<PrimitiveDataType> typeList = null;
+		typeList.add(PrimitiveDataType.INT);
+		typeList.add(PrimitiveDataType.STRING);
+		typeList.add(PrimitiveDataType.INT);
+		for (int i = 0; i < 10; i++) {
+			typeList.add(PrimitiveDataType.STRING);
+
+		}
+
 		dbcoordinator.updateData(sqlCmd, dataList, typeList);
 
 		return true;
@@ -86,7 +132,16 @@ public class Admin extends Person {
 
 		sqlCmd = "INSERT INTO STUDENTANDCOURSE VALUES (" + studentID + courseID + grading + courseTerm + ")";
 		ArrayList<String> dataList = null;
+		dataList.add(Integer.toString(studentID));
+		dataList.add(Integer.toString(courseID));
+		dataList.add(grading);
+		dataList.add(courseTerm);
+
 		ArrayList<PrimitiveDataType> typeList = null;
+		typeList.add(PrimitiveDataType.INT);
+		typeList.add(PrimitiveDataType.INT);
+		typeList.add(PrimitiveDataType.STRING);
+		typeList.add(PrimitiveDataType.STRING);
 
 		dbcoordinator.insertData(sqlCmd, dataList, typeList);
 
@@ -106,7 +161,16 @@ public class Admin extends Person {
 		sqlCmd = "UPDATE STUDENTANDCOURSE SET ID =" + studentID + "SET COURSEID =" + courseID + "SET GRADING = "
 				+ grading + "SET COURSETERM =" + courseTerm;
 		ArrayList<String> dataList = null;
+		dataList.add(Integer.toString(studentID));
+		dataList.add(Integer.toString(courseID));
+		dataList.add(grading);
+		dataList.add(courseTerm);
+
 		ArrayList<PrimitiveDataType> typeList = null;
+		typeList.add(PrimitiveDataType.INT);
+		typeList.add(PrimitiveDataType.INT);
+		typeList.add(PrimitiveDataType.STRING);
+		typeList.add(PrimitiveDataType.STRING);
 
 		dbcoordinator.updateData(sqlCmd, dataList, typeList);
 
