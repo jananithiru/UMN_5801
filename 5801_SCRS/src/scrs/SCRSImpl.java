@@ -59,9 +59,17 @@ public class SCRSImpl implements mySCRS {
 	}
 
 	@Override
-	public Boolean studentAddClass(Token token, int courseID, String grading, String courseTerm) {
+	public boolean studentAddClass(Token token, int courseID, String grading, String courseTerm) {
 		// TODO Auto-generated method stub
 		Student student = new Student();
 		return student.studentAddClass(token, courseID, grading, courseTerm);
+	}
+
+	@Override
+	public boolean studentDropClass(Token token, int courseID) {
+		// TODO Auto-generated method stub
+		Student student = new Student();
+	
+		return false;
 	}
 }
