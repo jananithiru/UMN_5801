@@ -1,39 +1,69 @@
 package scrs;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import scrs.Constants.PrimitiveDataType;
+import scrs.ShibbolethAuth.Token.RoleType;
+
 public class Student extends Person {
+
+	boolean studentAddClass(ShibbolethAuth.Token token, int courseId, String grading, String courseTerm) {
+		if (token.type == RoleType.ADMIN) {
+			return false;
+		}
+		DBCoordinator dbCoordinator = new DBCoordinator();
+		String sqlStr = "insert into StudentAndCourse values(" + courseId + ",'" + grading + "','" + courseTerm + "')"; // id
+																												// is
+																												// autoincrement
+
+		ArrayList<String> dataList = new ArrayList<String>();
+		dataList.add(Integer.toString(courseId));
+		dataList.add(grading);
+		dataList.add(courseTerm);
+		ArrayList<PrimitiveDataType> typeList = new ArrayList<Constants.PrimitiveDataType>();
+		typeList.add(PrimitiveDataType.INT);
+		typeList.add(PrimitiveDataType.STRING);
+		typeList.add(PrimitiveDataType.STRING);
+		dbCoordinator.insertData(sqlStr, dataList, typeList);
+		return true;
+
+	}
+
+	boolean studentDropClass(ShibbolethAuth.Token token, int courseID) {
+		if (token.type == RoleType.ADMIN) {
+			return false;
+		}
+		DBCoordinator dbCoordinator = new DBCoordinator();
+		String sqlStr = "delete from StudentAndCourse where courseId=" + courseID;
+		ArrayList<String> dataList = new ArrayList<String>();
+		dataList.add(Integer.toString(courseID));
+		ArrayList<PrimitiveDataType> typeList = new ArrayList<PrimitiveDataType>();
+		typeList.add(PrimitiveDataType.INT);
+
+		dbCoordinator.deleteData(sqlStr, dataList, typeList);
+
+		return true;
+	}
 	
-	boolean studentAddClass(ShibbolethAuth.Token token, int courseID, String grading, String courseTerm) {
-		return false; 
-		// TODO Auto-generated method stub
-		//
-//				// TODO: Come up with this string escpared corrected 
-//				DBCoordinator dbcoordinator = new DBCoordinator();
-//					
-//				//"select all class which match my criteria"
-//				// query for class data 
-//				//String sqlStr = "select * rom classe hwere course '\''"
-//				
-//				List<ArrayList<Object>> objList = dbcoordinator.queryData(sqlStr);
-//		
-//				//calc time frame for those classes 
-//				
-//				// ideally only one classs should be returned 
-//				//pull the one class from the list 
-//				//
-//				String startdate = calculateStartTimeFramefromClass(objList[i]);
-//				String Enddate = calculateEndTimeFramefromClass(objList[i]);
-//				
-//				
-//				if ( today is before than enddate and after startdate)
-//					then create insert sql cmd 
-//					then call dbcoordinator.insertData(sqlCmd, dataList, typeList);
-//					also 
-//					then create insert sql cmd 
-//					call insertDate into student and Course table 
-//						
-//				else in not within timegram\\
-//				retunr error
-//				
-//				
-//				//TODO: Type case from Object to String 
+	// why we need the parameter courseTerm
+	boolean studentEditClass(ShibbolethAuth.Token token, int courseID, String grading, String courseTerm){
+		if (token.type == RoleType.ADMIN) {
+			return false;
+		}
+		DBCoordinator dbCoordinator = new DBCoordinator();
+		String sqlStr = "update StudentAndCourse set grading='" + grading + "' where courseId="+courseID;
+		ArrayList<String> dataList = new ArrayList<String>();
+		dataList.add(grading);
+		dataList.add(Integer.toString(courseID));
+		ArrayList<PrimitiveDataType> typeList = new ArrayList<PrimitiveDataType>();
+		typeList.add(PrimitiveDataType.STRING);
+		typeList.add(PrimitiveDataType.INT);
+		
+		dbCoordinator.updateData(sqlStr, dataList, typeList);
+		
+		return true;
+		
 	}
 }

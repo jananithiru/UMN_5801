@@ -68,6 +68,8 @@ public class SCRSImpl implements SCRS {
 
 	}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 
 	@Override
 	public List<ArrayList<String>> queryClass(int courseID, String courseName, String location, String term,
@@ -87,16 +89,28 @@ public class SCRSImpl implements SCRS {
 		// TODO Auto-generated method stub
 		return null;
 	}
+>>>>>>> origin/master
 
 	@Override
 	public boolean studentAddClass(Token token, int courseID, String grading, String courseTerm) {
 		// TODO Auto-generated method stub
+<<<<<<< HEAD
+		Student student = new Student();
+		return student.studentAddClass(token, courseID, grading, courseTerm);
+=======
 		return false;
+>>>>>>> origin/master
 	}
 
 	@Override
 	public boolean studentDropClass(Token token, int courseID) {
 		// TODO Auto-generated method stub
+<<<<<<< HEAD
+		Student student = new Student();
+	
+		return false;
+	}
+=======
 		return false;
 	}
 
@@ -149,5 +163,6 @@ public class SCRSImpl implements SCRS {
 
 }
 =======
+>>>>>>> origin/master
 }
 >>>>>>> bruce
