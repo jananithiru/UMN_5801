@@ -17,5 +17,6 @@ public interface mySCRS {
 	public List<ArrayList<String>> queryAdminPersonalData(ShibbolethAuth.Token token, int adminID);
 	public boolean studentAddClass(ShibbolethAuth.Token token, int courseID, String grading, String courseTerm);
 	public boolean studentDropClass(ShibbolethAuth.Token token, int courseID);
+	public boolean studentEditClass(ShibbolethAuth.Token token, int courseID, String grading, String courseTerm);
 	
 }

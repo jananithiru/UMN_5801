@@ -14,7 +14,7 @@ public class Student extends Person {
 			return false;
 		}
 		DBCoordinator dbCoordinator = new DBCoordinator();
-		String sqlStr = "insert into course values(" + courseId + ",'" + grading + "','" + courseTerm + "')"; // id
+		String sqlStr = "insert into StudentAndCourse values(" + courseId + ",'" + grading + "','" + courseTerm + "')"; // id
 																												// is
 																												// autoincrement
 
@@ -36,7 +36,7 @@ public class Student extends Person {
 			return false;
 		}
 		DBCoordinator dbCoordinator = new DBCoordinator();
-		String sqlStr = "delete from course where courseId=" + courseID;
+		String sqlStr = "delete from StudentAndCourse where courseId=" + courseID;
 		ArrayList<String> dataList = new ArrayList<String>();
 		dataList.add(Integer.toString(courseID));
 		ArrayList<PrimitiveDataType> typeList = new ArrayList<PrimitiveDataType>();
@@ -45,5 +45,25 @@ public class Student extends Person {
 		dbCoordinator.deleteData(sqlStr, dataList, typeList);
 
 		return true;
+	}
+	
+	// why we need the parameter courseTerm
+	boolean studentEditClass(ShibbolethAuth.Token token, int courseID, String grading, String courseTerm){
+		if (token.type == RoleType.ADMIN) {
+			return false;
+		}
+		DBCoordinator dbCoordinator = new DBCoordinator();
+		String sqlStr = "update StudentAndCourse set grading='" + grading + "' where courseId="+courseID;
+		ArrayList<String> dataList = new ArrayList<String>();
+		dataList.add(grading);
+		dataList.add(Integer.toString(courseID));
+		ArrayList<PrimitiveDataType> typeList = new ArrayList<PrimitiveDataType>();
+		typeList.add(PrimitiveDataType.STRING);
+		typeList.add(PrimitiveDataType.INT);
+		
+		dbCoordinator.updateData(sqlStr, dataList, typeList);
+		
+		return true;
+		
 	}
 }
