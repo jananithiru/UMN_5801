@@ -67,6 +67,7 @@ public class SCRSImpl implements SCRS {
 		return result;
 
 	}
+<<<<<<< HEAD
 
 	@Override
 	public List<ArrayList<String>> queryClass(int courseID, String courseName, String location, String term,
@@ -147,3 +148,6 @@ public class SCRSImpl implements SCRS {
 	}
 
 }
+=======
+}
+>>>>>>> bruce
