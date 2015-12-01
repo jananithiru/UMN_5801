@@ -8,17 +8,18 @@ public class CourseTable {
 	int credits;
 	Date firstDay;
 	Date lastDay;
-	String classBeginTime; //9:00am
+	String classBeginTime; // 9:00am
 	String classEndTime; // 11:00am
-	String routines; //e.g. Fri
+	String routines; // e.g. Fri
 	String location;
-	String type; //on campus or Unite
+	String type; // on campus or Unite
 	String prereuisite;
 	String description;
 	String department;
-	
-	public CourseTable(int courseId, String name, int credits, Date firstDay, Date lastDay, String classBeginTime, String classEndTime,
-			String routines, String location, String type, String prereuisite, String description, String department){
+
+	public CourseTable(int courseId, String name, int credits, Date firstDay, Date lastDay, String classBeginTime,
+			String classEndTime, String routines, String location, String type, String prereuisite, String description,
+			String department) {
 		super();
 		this.courseId = courseId;
 		this.name = name;
@@ -33,7 +34,7 @@ public class CourseTable {
 		this.prereuisite = prereuisite;
 		this.description = description;
 		this.department = department;
-		
+
 	}
 
 	public int getCourseId() {
@@ -139,6 +140,5 @@ public class CourseTable {
 	public void setDepartment(String department) {
 		this.department = department;
 	}
-	
-	
+
 }
