@@ -9,7 +9,7 @@ import scrs.ShibbolethAuth.Token;
 public class TestStudentFunctionality {
 	@Test
 	public void TestStudentAddClass() {
-		mySCRS testScrs = new SCRSImpl();
+		SCRS testScrs = new SCRSImpl();
 		ShibbolethAuth sbAuth = new ShibbolethAuth();
 		Token myToken = testScrs.userLogin("bob999", "mypassword");
 		if (myToken != null && sbAuth.TokenAuth(myToken)) {
@@ -26,7 +26,7 @@ public class TestStudentFunctionality {
 
 	@Test
 	public void TestStudentDropClass() {
-		mySCRS testScrs = new SCRSImpl();
+		SCRS testScrs = new SCRSImpl();
 		ShibbolethAuth sbAuth = new ShibbolethAuth();
 		Token myToken = testScrs.userLogin("bob999", "mypassword");
 		if (myToken != null && sbAuth.TokenAuth(myToken)) {
