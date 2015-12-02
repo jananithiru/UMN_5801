@@ -1,12 +1,12 @@
 package scrs;
 
-
+import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import scrs.ShibbolethAuth.Token;
 
-
-public class SCRSImpl implements mySCRS {
+public class SCRSImpl implements SCRS {
 
 	public Token userLogin(String x500, String password) {
 		ShibbolethAuth sbAuth = new ShibbolethAuth();
@@ -67,7 +67,8 @@ public class SCRSImpl implements mySCRS {
 
 	}
 
-	@Override
+
+@Override
 	public boolean studentAddClass(Token token, int courseID, String grading, String courseTerm) {
 		// TODO Auto-generated method stub
 		Student student = new Student();
@@ -90,7 +91,97 @@ public class SCRSImpl implements mySCRS {
 		Student student = new Student();
 		return student.studentEditClass(token, courseID, grading, courseTerm);
 	}
+ 
+	@Override
+	public List<ArrayList<String>> queryClass(int courseID, String courseName, String location, String term,
+			String department, String classType, String instructorName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-	
+	@Override
+	public List<ArrayList<String>> queryStudentRegistrationHistory(Token token, int studentID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
+	@Override
+
+	public boolean adminAddClass(Token token, int courseID, String courseName, int courseCredits, String instructor,
+			String firstDay, String lastDay, String classBeginTime, String classEndTime, String weekDays,
+			String location, String type, String prerequisite, String description, String department) {
+		// TODO Auto-generated method stub
+
+		Admin admin = new Admin();
+		try {
+			admin.adminAddClass(token, courseID, courseName, courseCredits, instructor, firstDay, lastDay,
+					classBeginTime, classEndTime, weekDays, location, type, prerequisite, description, department);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return true;
+	}
+
+	public boolean adminDeleteClass(Token token, int courseID) {
+		// TODO Auto-generated method stub
+		Admin admin = new Admin();
+		try {
+			admin.adminDeleteClass(token, courseID);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return true;
+	}
+
+
+	@Override
+
+	public boolean adminEditClass(Token token, int courseID, String courseName, int courseCredits, String instructor,
+			String firstDay, String lastDay, String classBeginTime, String classEndTime, String weekDays,
+			String location, String type, String prerequisite, String description, String department) {
+		// TODO Auto-generated method stub
+
+		Admin admin = new Admin();
+		try {
+			admin.adminEditClass(token, courseID, courseName, courseCredits, instructor, firstDay, lastDay,
+					classBeginTime, classEndTime, weekDays, location, type, prerequisite, description, department);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return true;
+	}
+
+	public boolean adminAddStudentToClass(Token token, int studentID, int courseID, String grading, String courseTerm) {
+		// TODO Auto-generated method stub
+		Admin admin = new Admin();
+		try {
+			admin.adminAddStudentToClass(token, studentID, courseID, grading, courseTerm);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return true;
+	}
+
+	public boolean adminEditStudentRegisteredClass(Token token, int studentID, int courseID, String grading,
+			String courseTerm) {
+		// TODO Auto-generated method stub
+		Admin admin = new Admin();
+		try {
+			admin.adminEditStudentRegisteredClass(token, studentID, courseID, grading, courseTerm);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return true;
+	}
+
+	@Override
+	public List<ArrayList<String>> queryInstructor(Token token, int instructorID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -45,7 +45,7 @@ public class TestStudentFunctionality {
 
 	@Test
 	public void testStudentEditClass() {
-		mySCRS testScrs = new SCRSImpl();
+		SCRS testScrs = new SCRSImpl();
 		ShibbolethAuth sbAuth = new ShibbolethAuth();
 		Token myToken = testScrs.userLogin("bob999", "mypassword");
 		if (myToken != null && sbAuth.TokenAuth(myToken)) {
