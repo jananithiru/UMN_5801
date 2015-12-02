@@ -1,6 +1,7 @@
 package scrs;
 
 import static org.junit.Assert.assertEquals;
+import dbbuilder.*;
 
 import org.junit.Test;
 
@@ -9,7 +10,7 @@ import scrs.ShibbolethAuth.Token;
 public class TestStudentFunctionality {
 	@Test
 	public void TestStudentAddClass() {
-		SCRS testScrs = new SCRSImpl();
+		mySCRS testScrs = new SCRSImpl();
 		ShibbolethAuth sbAuth = new ShibbolethAuth();
 		Token myToken = testScrs.userLogin("bob999", "mypassword");
 		if (myToken != null && sbAuth.TokenAuth(myToken)) {
@@ -26,7 +27,7 @@ public class TestStudentFunctionality {
 
 	@Test
 	public void TestStudentDropClass() {
-		SCRS testScrs = new SCRSImpl();
+		mySCRS testScrs = new SCRSImpl();
 		ShibbolethAuth sbAuth = new ShibbolethAuth();
 		Token myToken = testScrs.userLogin("bob999", "mypassword");
 		if (myToken != null && sbAuth.TokenAuth(myToken)) {
@@ -51,7 +52,7 @@ public class TestStudentFunctionality {
 			
 			//boolean result = true;
 			assertEquals(true,testScrs.studentEditClass(myToken, 8735, "S/N", "Fall"));
-			boolean testResult = testScrs.studentEditClass(myToken, 8735, "S/N", "Fall");
+			//boolean testResult = testScrs.studentEditClass(myToken, 8735, "S/N", "Fall");
 //			if (testResult == true) {
 //				System.out.println("Dropping class is done!");
 //			} else

@@ -13,7 +13,7 @@ public class TestQueryPersonalInformation {
 	public void testDisplayStudentDetails() {
 
 		// INITIALIZATION
-		SCRS testScrs = new SCRSImpl(); 
+		mySCRS testScrs = new SCRSImpl(); 
 		
 		// LOGIN
 		ShibbolethAuth sbAuth = new ShibbolethAuth();
@@ -36,7 +36,7 @@ public class TestQueryPersonalInformation {
 
 		// INITIALIZATION
 
-		SCRS testScrs = new SCRSImpl();
+		mySCRS testScrs = new SCRSImpl();
 
 		ShibbolethAuth sbAuth = new ShibbolethAuth();
 		Token myToken = testScrs.userLogin("bob999", "mypassword");
@@ -74,7 +74,7 @@ public class TestQueryPersonalInformation {
 	public void testDisplayValidAdminDetails() {
 
 		
-		SCRS testScrs = new SCRSImpl(); 
+		mySCRS testScrs = new SCRSImpl(); 
 		
 		ShibbolethAuth sbAuth = new ShibbolethAuth();
 		Token myToken = testScrs.userLogin("bob111", "mypassword");
