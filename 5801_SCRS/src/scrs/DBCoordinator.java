@@ -8,6 +8,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 public class DBCoordinator {
 	private Connection con;
@@ -25,7 +26,7 @@ public class DBCoordinator {
 				throw new IllegalArgumentException("SQL contains non select command, such as Insert, Update, Delete.");
 			
 			Class.forName("org.sqlite.JDBC");
-			con = DriverManager.getConnection("jdbc:sqlite:SCRSDataBase.db");
+			con = DriverManager.getConnection("jdbc:sqlite:CSRSDataBase.db");
 			con.setAutoCommit(false);
 			System.out.println("Opened database successfully");
 
@@ -62,7 +63,7 @@ public class DBCoordinator {
 						throw new IllegalArgumentException("SQL contains non select command, such as Insert, Update, Select.");
 			
 			Class.forName("org.sqlite.JDBC");
-			con = DriverManager.getConnection("jdbc:sqlite:SCRSDataBase.db");
+			con = DriverManager.getConnection("jdbc:sqlite:CSRSDataBase.db");
 			con.setAutoCommit(false);
 			System.out.println("Opened database successfully");
 
@@ -92,7 +93,7 @@ public class DBCoordinator {
 		}
 		System.out.println("Operation done successfully");
 	}
-
+Properties pro = new Properties();
 	public void insertData(String sqlCmd, ArrayList<String> dataList, ArrayList<Constants.PrimitiveDataType> typeList) {
 		sqlCmd = sqlCmd.toUpperCase();
 		try {
@@ -102,7 +103,7 @@ public class DBCoordinator {
 						throw new IllegalArgumentException("SQL contains non select command, such as Select, Update, Delete.");
 			
 			Class.forName("org.sqlite.JDBC");
-			con = DriverManager.getConnection("jdbc:sqlite:SCRSDataBase.db");
+			con = DriverManager.getConnection("jdbc:sqlite:CSRSDataBase.db");
 			con.setAutoCommit(false);
 			System.out.println("Opened database successfully");
 
@@ -142,7 +143,7 @@ public class DBCoordinator {
 						throw new IllegalArgumentException("SQL contains non select command, such as Insert, Select, Delete.");
 			
 			Class.forName("org.sqlite.JDBC");
-			con = DriverManager.getConnection("jdbc:sqlite:SCRSDataBase.db");
+			con = DriverManager.getConnection("jdbc:sqlite:CSRSDataBase.db");
 			con.setAutoCommit(false);
 			System.out.println("Opened database successfully");
 
