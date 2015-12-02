@@ -178,6 +178,12 @@ public class SCRSImpl implements SCRS {
 		}
 		return true;
 	}
+	boolean adminDropStudentRegisteredClass(ShibbolethAuth.Token token, int studentID, int courseID){
+		Admin admin = new Admin();
+		admin.adminDropStudentRegisteredClass(ShibbolethAuth.Token token, int studentID, int courseID);
+		return true;
+	}
+
 
 	@Override
 	public List<ArrayList<String>> queryInstructor(Token token, int instructorID) {

@@ -177,5 +177,26 @@ public class Admin extends Person {
 		return true;
 
 	}
+	public boolean adminDropStudentRegisteredClass(ShibbolethAuth.Token token, int studentID, int courseID){
+		if (token.type != Token.RoleType.ADMIN) {
+			return false;
+		}
+
+		DBCoordinator dbcoordinator = new DBCoordinator();
+
+		String sqlCmd = null;
+		sqlCmd = "DELETE DATA FROM STUDENTANDCOURSE TABLE WHERE STUDENTID =" + studentID + "COURSEID = " + courseID;
+		ArrayList<String> dataList = null;
+		dataList.add(Integer.toString(studentID));
+		dataList.add(Integer.toString(courseID));
+
+		ArrayList<PrimitiveDataType> typeList = null;
+		typeList.add(PrimitiveDataType.INT);
+		typeList.add(PrimitiveDataType.INT);
+		dbcoordinator.updateData(sqlCmd, dataList, typeList);
+		return true;
+
+		
+	}
 
 }
