@@ -21,13 +21,6 @@ public class SCRSImpl implements SCRS {
 	@Override
 	public List<ArrayList<String>> queryStudentPersonalData(Token token, int studentID) {
 
-		// TODO: //Assuming the request is already verified as student.
-		// Done. IN higher class if this session belongs to a student then query
-		// student personal data
-		// iff] student is present in the student tb]\\avle,
-
-		// TODO: Create new DBCoodinator object here or elsewhere ?
-
 		if (token.type == Token.RoleType.UNDEFINED) {
 			System.out.print(ErrorMessages.invalidCredentials);
 			return null; // CUSTOM EXCEPTION
@@ -171,17 +164,62 @@ public class SCRSImpl implements SCRS {
 	@Override
 	public boolean studentAddClass(Token token, int courseID, String grading, String courseTerm) {
 		// TODO Auto-generated method stub
+
+		Student student = new Student();
+		return student.studentAddClass(token, courseID, grading, courseTerm);
+
 		return false;
 	}
 
 	@Override
 	public boolean studentDropClass(Token token, int courseID) {
 		// TODO Auto-generated method stub
+
+		Student student = new Student();
+	
+		return false;
+	}
+
 		return false;
 	}
 
 	@Override
 	public boolean studentEditClass(Token token, int courseID, String grading, String courseTerm) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean adminAddClass(Token token, int courseID, String courseName, int courseCredits, String instructor,
+			String firstDay, String lastDay, String classBeginTime, String classEndTime, String weekDays,
+			String location, String type, String prerequisite, String description, String department) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean adminDeleteClass(Token token, int courseID) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean adminEditClass(Token token, int courseID, String courseName, int courseCredits, String instructor,
+			String firstDay, String lastDay, String classBeginTime, String classEndTime, String weekDays,
+			String location, String type, String prerequisite, String description, String department) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean adminAddStudentToClass(Token token, int studentID, int courseID, String grading, String courseTerm) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean adminEditStudentRegisteredClass(Token token, int studentID, int courseID, String grading,
+			String courseTerm) {
 		// TODO Auto-generated method stub
 		return false;
 	}
