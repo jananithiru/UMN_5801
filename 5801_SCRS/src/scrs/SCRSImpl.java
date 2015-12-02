@@ -1,5 +1,6 @@
 package scrs;
 
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -67,9 +68,6 @@ public class SCRSImpl implements SCRS {
 		return result;
 
 	}
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 
 	@Override
 	public List<ArrayList<String>> queryClass(int courseID, String courseName, String location, String term,
@@ -85,32 +83,103 @@ public class SCRSImpl implements SCRS {
 	}
 
 	@Override
+
+	public boolean adminAddClass(Token token, int courseID, String courseName, int courseCredits, String instructor,
+			String firstDay, String lastDay, String classBeginTime, String classEndTime, String weekDays,
+			String location, String type, String prerequisite, String description, String department) {
+		// TODO Auto-generated method stub
+
+		Admin admin = new Admin();
+		try {
+			admin.adminAddClass(token, courseID, courseName, courseCredits, instructor, firstDay, lastDay,
+					classBeginTime, classEndTime, weekDays, location, type, prerequisite, description, department);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return true;
+	}
+
+	public boolean adminDeleteClass(Token token, int courseID) {
+		// TODO Auto-generated method stub
+		Admin admin = new Admin();
+		try {
+			admin.adminDeleteClass(token, courseID);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return true;
+	}
+
+	@Override
+
+	public boolean adminEditClass(Token token, int courseID, String courseName, int courseCredits, String instructor,
+			String firstDay, String lastDay, String classBeginTime, String classEndTime, String weekDays,
+			String location, String type, String prerequisite, String description, String department) {
+		// TODO Auto-generated method stub
+
+		Admin admin = new Admin();
+		try {
+			admin.adminEditClass(token, courseID, courseName, courseCredits, instructor, firstDay, lastDay,
+					classBeginTime, classEndTime, weekDays, location, type, prerequisite, description, department);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return true;
+	}
+
+	public boolean adminAddStudentToClass(Token token, int studentID, int courseID, String grading, String courseTerm) {
+		// TODO Auto-generated method stub
+		Admin admin = new Admin();
+		try {
+			admin.adminAddStudentToClass(token, studentID, courseID, grading, courseTerm);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return true;
+	}
+
+	public boolean adminEditStudentRegisteredClass(Token token, int studentID, int courseID, String grading,
+			String courseTerm) {
+		// TODO Auto-generated method stub
+		Admin admin = new Admin();
+		try {
+			admin.adminEditStudentRegisteredClass(token, studentID, courseID, grading, courseTerm);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return true;
+	}
+
+	@Override
 	public List<ArrayList<String>> queryInstructor(Token token, int instructorID) {
 		// TODO Auto-generated method stub
 		return null;
 	}
->>>>>>> origin/master
 
 	@Override
 	public boolean studentAddClass(Token token, int courseID, String grading, String courseTerm) {
 		// TODO Auto-generated method stub
-<<<<<<< HEAD
+
 		Student student = new Student();
 		return student.studentAddClass(token, courseID, grading, courseTerm);
-=======
+
 		return false;
->>>>>>> origin/master
 	}
 
 	@Override
 	public boolean studentDropClass(Token token, int courseID) {
 		// TODO Auto-generated method stub
-<<<<<<< HEAD
+
 		Student student = new Student();
 	
 		return false;
 	}
-=======
+
 		return false;
 	}
 
@@ -162,7 +231,3 @@ public class SCRSImpl implements SCRS {
 	}
 
 }
-=======
->>>>>>> origin/master
-}
->>>>>>> bruce
