@@ -14,8 +14,21 @@ public class SQLStrings {
 		return sqlStr;
 	}
 
+	//TODO not sure how to search for term
 	public static String selectAllFromCourse(int courseID, String courseName, String location, String term,
 			String department, String classType, String instructorName) {
+		String sqlStr = "select * FROM course WHERE id = " + courseID + "AND department = " + department + 
+				"AND location = " + location + "AND term = " + term;
+		if (courseName != "") {
+			sqlStr += " AND name = " + courseName;
+		}
+		if (classType != "") {
+			sqlStr += " AND type = " + classType;
+		}
+		//no instructor field
+		if (instructorName != "") {
+			sqlStr += " AND instructor = " + instructorName;
+		}
 		// TODO Auto-generated method stub
 		return null;
 	}
