@@ -13,6 +13,17 @@ public class SQLStrings {
 		String sqlStr = "select * from administrator where id=" + adminID;
 		return sqlStr;
 	}
+
+	public static String selectAllFromCourse(int courseID, String courseName, String location, String term,
+			String department, String classType, String instructorName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public static String selectHistoryFromStudentAndCourse(int studentID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 
 	
