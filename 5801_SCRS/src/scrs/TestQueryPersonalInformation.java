@@ -1,10 +1,14 @@
 package scrs;
-
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import org.junit.Test;
+
+import scrs.SCRS;
+import scrs.SCRSImpl;
+import scrs.ShibbolethAuth;
 import scrs.ShibbolethAuth.Token;
 
 public class TestQueryPersonalInformation {
@@ -13,21 +17,29 @@ public class TestQueryPersonalInformation {
 	public void testDisplayStudentDetails() {
 
 		// INITIALIZATION
-		mySCRS testScrs = new SCRSImpl(); 
-		
+		SCRS testScrs = new SCRSImpl();
+
 		// LOGIN
 		ShibbolethAuth sbAuth = new ShibbolethAuth();
-		Token myToken = testScrs.userLogin("alice001", "mypassword");
+		Token myToken = ((SCRSImpl) testScrs).userLogin("alice001", "mypassword");
 
-		if (myToken != null && sbAuth.TokenAuth(myToken)) {
-			List<ArrayList<String>> testResult = testScrs.queryStudentPersonalData(myToken, myToken.id);
-			Iterator<ArrayList<String>> printIter = testResult.iterator();
-			while (printIter.hasNext()) {
-				Iterator<String> printInnerIter = printIter.next().iterator();
-				while (printInnerIter.hasNext()) {
-					System.out.print(printInnerIter.next() + "\t");
+		try {
+			if (myToken != null && sbAuth.TokenAuth(myToken)) {
+				List<ArrayList<String>> testResult = testScrs.queryStudentPersonalData(myToken, myToken.id);
+				Iterator<ArrayList<String>> printIter = testResult.iterator();
+				while (printIter.hasNext()) {
+					Iterator<String> printInnerIter = printIter.next().iterator();
+					while (printInnerIter.hasNext()) {
+						System.out.print(printInnerIter.next() + "\t");
+					}
 				}
 			}
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
@@ -36,14 +48,14 @@ public class TestQueryPersonalInformation {
 
 		// INITIALIZATION
 
-		mySCRS testScrs = new SCRSImpl();
+		SCRS testScrs = new SCRSImpl();
 
 		ShibbolethAuth sbAuth = new ShibbolethAuth();
-		Token myToken = testScrs.userLogin("bob999", "mypassword");
+		Token myToken = ((SCRSImpl) testScrs).userLogin("bob999", "mypassword");
 
-		if (myToken != null && sbAuth.TokenAuth(myToken)) //
-			if (myToken.type == Token.RoleType.STUDENT) {
-
+		try {
+			if (myToken != null && sbAuth.TokenAuth(myToken)) //
+			{
 				List<ArrayList<String>> testResult = testScrs.queryStudentPersonalData(myToken, myToken.id);
 
 				Iterator<ArrayList<String>> printIter = testResult.iterator();
@@ -54,48 +66,28 @@ public class TestQueryPersonalInformation {
 						System.out.print(printInnerIter.next() + "\t");
 					}
 				}
-
-			} else if (myToken.type == Token.RoleType.ADMIN) {
-
-				List<ArrayList<String>> testResult = testScrs.queryAdminPersonalData(myToken, myToken.id);
-
-				Iterator<ArrayList<String>> printIter = testResult.iterator();
-				while (printIter.hasNext()) {
-					Iterator<String> printInnerIter = printIter.next().iterator();
-					while (printInnerIter.hasNext()) {
-						// metaRes.add(innerIter.next().toString());
-						System.out.print(printInnerIter.next() + "\t");
-					}
-				}
 			}
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Test
 	public void testDisplayValidAdminDetails() {
 
-		
-		mySCRS testScrs = new SCRSImpl(); 
-		
+		SCRS testScrs = new SCRSImpl();
+
 		ShibbolethAuth sbAuth = new ShibbolethAuth();
-		Token myToken = testScrs.userLogin("bob111", "mypassword");
+		Token myToken = ((SCRSImpl) testScrs).userLogin("bob111", "mypassword");
 
-		if (myToken != null && sbAuth.TokenAuth(myToken)) //
-			if (myToken.type == Token.RoleType.STUDENT) {
-
-				List<ArrayList<String>> testResult = testScrs.queryStudentPersonalData(myToken, myToken.id);
-
-				Iterator<ArrayList<String>> printIter = testResult.iterator();
-				while (printIter.hasNext()) {
-					Iterator<String> printInnerIter = printIter.next().iterator();
-					while (printInnerIter.hasNext()) {
-						System.out.print(printInnerIter.next() + "\t");
-					}
-				}
-
-			} else if (myToken.type == Token.RoleType.ADMIN) {
-
+		try {
+			if (myToken != null && sbAuth.TokenAuth(myToken)) //
+			{
 				List<ArrayList<String>> testResult = testScrs.queryAdminPersonalData(myToken, myToken.id);
-
 				Iterator<ArrayList<String>> printIter = testResult.iterator();
 				while (printIter.hasNext()) {
 					Iterator<String> printInnerIter = printIter.next().iterator();
@@ -104,5 +96,12 @@ public class TestQueryPersonalInformation {
 					}
 				}
 			}
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

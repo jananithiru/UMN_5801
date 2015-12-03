@@ -4,7 +4,7 @@ import java.sql.DriverManager;
 import java.sql.Statement;
 
 public class InsertQueries {
-	static String databaseName = "jdbc:sqlite:CSRSDataBase.db";
+	static String databaseName = "jdbc:sqlite:SCRSDataBase.db";
 	public static void insertStudentTable()
 	  {
 	    Connection c = null;
@@ -19,6 +19,19 @@ public class InsertQueries {
 	      
 	      
 	      //SHIBBOLETHAUTH
+	      
+	      String userNames11 = "INSERT INTO SHIBBOLETHAUTH (ID, X500ACCOUNT, X500PASSWORD, USERID, USERTYPE) " +
+	                "VALUES (null, 'bob111', 'mypassword', 111, 'ADMIN');"; 
+		      stmt.executeUpdate(userNames11);
+		
+		      String userNames22 = "INSERT INTO SHIBBOLETHAUTH (ID, X500ACCOUNT, X500PASSWORD, USERID, USERTYPE) " +
+	                "VALUES (null, 'bob222', 'mypassword', 222, 'ADMIN');"; 
+		      stmt.executeUpdate(userNames22);
+		
+		      String userNames33 = "INSERT INTO SHIBBOLETHAUTH (ID, X500ACCOUNT, X500PASSWORD, USERID, USERTYPE) " +
+	                "VALUES (null, 'bob333', 'mypassword', 333, 'ADMIN');"; 
+		      stmt.executeUpdate(userNames33);
+		      
 	      String userNames = "INSERT INTO SHIBBOLETHAUTH (ID, X500ACCOUNT, X500PASSWORD, USERID, USERTYPE) " +
                   "VALUES (null, 'alice001', 'mypassword', 1, 'STUDENT');"; 
 	      stmt.executeUpdate(userNames);
@@ -38,29 +51,29 @@ public class InsertQueries {
 	      
 	      //STUDENT
 	      String allValues = "INSERT INTO STUDENT (ID, FIRSTNAME, LASTNAME, DATEOFBIRTH,TYPE,GENDER,ADVISOR,PLAN,CREDITS,DEPARTMENT) " +
-	                   "VALUES (10, 'Alice1', 'Liddell',  2013-10-07 ,'MS', 'Female', 'Mad Hatter', 'Graduate Degree Plan', 10, 'Computer Science');"; 
+	                   "VALUES (1, 'Alice1', 'Liddell',  2013-10-07 ,'MS', 'Female', 'Mad Hatter', 'Graduate Degree Plan', 10, 'Computer Science');"; 
 	      stmt.executeUpdate(allValues);
 
 	      String reqdValues1 = "INSERT INTO STUDENT (ID,FIRSTNAME, LASTNAME, DATEOFBIRTH,TYPE,PLAN,CREDITS,DEPARTMENT) " +
-                  "VALUES (11, 'Alice2', 'Liddell2',  2000-10-03 ,'BS',  'Graduate Degree Plan', 22, 'Computer Science');"; 
+                  "VALUES (2, 'Alice2', 'Liddell2',  2000-10-03 ,'BS',  'Graduate Degree Plan', 22, 'Computer Science');"; 
 	      stmt.executeUpdate(reqdValues1);
 	      
 	      String reqdValues2 = "INSERT INTO STUDENT (ID,FIRSTNAME, LASTNAME, DATEOFBIRTH,TYPE,PLAN,CREDITS,DEPARTMENT) " +
-                  "VALUES (12, 'Alice3', 'Liddell3',  2008-04-09 ,'BS',  'Graduate Degree Plan', 22, 'Computer Science');"; 
+                  "VALUES (3, 'Alice3', 'Liddell3',  2008-04-09 ,'BS',  'Graduate Degree Plan', 22, 'Computer Science');"; 
 	      stmt.executeUpdate(reqdValues2);
 	      
 	      
 	      //ADMIN
 	      String admin1 = "INSERT INTO ADMINISTRATOR (ID, FIRSTNAME, LASTNAME, DATEOFBIRTH, GENDER, DEPARTMENT) " +
-	                   "VALUES (10, 'AdminAlice1', 'Johnson',  1700-12-01, 'Female', 'Computer Science');"; 
+	                   "VALUES (101, 'AdminAlice1', 'Johnson',  1700-12-01, 'Female', 'Computer Science');"; 
 	      stmt.executeUpdate(admin1);
 
 	      String admin2 = "INSERT INTO ADMINISTRATOR (ID,FIRSTNAME, LASTNAME, DATEOFBIRTH,GENDER, DEPARTMENT) " +
-                  "VALUES (11, 'AdminAlice2', 'Johnson2',  1899-06-04 , 'Male', 'Botany');"; 
+                  "VALUES (102, 'AdminAlice2', 'Johnson2',  1899-06-04 , 'Male', 'Botany');"; 
 	      stmt.executeUpdate(admin2);
 	      
 	      String admin3 = "INSERT INTO ADMINISTRATOR (ID,FIRSTNAME, LASTNAME, DATEOFBIRTH,GENDER,DEPARTMENT) " +
-                  "VALUES (12, 'AdminAlice3', 'Johnson3',  2001-11-30 , 'Female', 'Horticulture');"; 
+                  "VALUES (103, 'AdminAlice3', 'Johnson3',  2001-11-30 , 'Female', 'Horticulture');"; 
 	      stmt.executeUpdate(admin3);
 	      
 	      //COURSE

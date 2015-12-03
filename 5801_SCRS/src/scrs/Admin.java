@@ -1,6 +1,7 @@
 package scrs;
 
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.ArrayList;
 
 import scrs.Constants.PrimitiveDataType;
@@ -48,7 +49,15 @@ public class Admin extends Person {
 
 		}
 
-		dbcoordinator.insertData(sqlCmd, dataList, typeList);
+		try {
+			dbcoordinator.insertData(sqlCmd, dataList, typeList);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		return true;
 
@@ -67,7 +76,15 @@ public class Admin extends Person {
 
 		ArrayList<PrimitiveDataType> typeList = null;
 		typeList.add(PrimitiveDataType.INT);
-		dbcoordinator.deleteData(sqlCmd, dataList, typeList);
+		try {
+			dbcoordinator.deleteData(sqlCmd, dataList, typeList);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		return false;
 
@@ -114,7 +131,15 @@ public class Admin extends Person {
 
 		}
 
-		dbcoordinator.updateData(sqlCmd, dataList, typeList);
+		try {
+			dbcoordinator.updateData(sqlCmd, dataList, typeList);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		return true;
 	}
@@ -143,7 +168,15 @@ public class Admin extends Person {
 		typeList.add(PrimitiveDataType.STRING);
 		typeList.add(PrimitiveDataType.STRING);
 
-		dbcoordinator.insertData(sqlCmd, dataList, typeList);
+		try {
+			dbcoordinator.insertData(sqlCmd, dataList, typeList);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		return true;
 
@@ -172,7 +205,15 @@ public class Admin extends Person {
 		typeList.add(PrimitiveDataType.STRING);
 		typeList.add(PrimitiveDataType.STRING);
 
-		dbcoordinator.updateData(sqlCmd, dataList, typeList);
+		try {
+			dbcoordinator.updateData(sqlCmd, dataList, typeList);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		return true;
 
@@ -193,7 +234,18 @@ public class Admin extends Person {
 		ArrayList<PrimitiveDataType> typeList = null;
 		typeList.add(PrimitiveDataType.INT);
 		typeList.add(PrimitiveDataType.INT);
-		dbcoordinator.updateData(sqlCmd, dataList, typeList);
+		try {
+			dbcoordinator.updateData(sqlCmd, dataList, typeList);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return true;
 
 		

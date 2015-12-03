@@ -4,7 +4,7 @@ import java.sql.DriverManager;
 import java.sql.Statement;
 
 public class SetupDB {
-	static String databaseName = "jdbc:sqlite:CSRSDataBase.db";
+	static String databaseName = "jdbc:sqlite:SCRSDataBase.db";
 	public static void createStudentTable() {
 		Connection c = null;
 		Statement stmt = null;
@@ -14,7 +14,7 @@ public class SetupDB {
 			System.out.println("Opened database successfully");
 
 			stmt = c.createStatement();
-			String sql = "CREATE TABLE STUDENT " 
+			String sql = "CREATE TABLE STUDENT " 	
 					+ "(ID INT PRIMARY KEY     NOT NULL,"
 					+ " FIRSTNAME           TEXT    NOT NULL, " 
 					+ " LASTNAME           TEXT    NOT NULL, "
@@ -198,6 +198,12 @@ public class SetupDB {
 	
 	public static void main(String args[]) {
 			createShibbolethAuthTable();
+			createStudentTable();
+			createStudentAndCourseTable();
+			createAdministratorTable();
+			createInstructorTable();
+			createInstructorAndCourseTable();
+			createCourseTable();
 	}
 
 }

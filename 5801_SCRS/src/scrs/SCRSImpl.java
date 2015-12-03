@@ -12,7 +12,16 @@ public class SCRSImpl implements SCRS {
 		ShibbolethAuth sbAuth = new ShibbolethAuth();
 		if (x500 == null || password == null)
 			return null; // TODO: Check if we need to throw exceptions
-		Token myToken = sbAuth.tokenGenerator(x500, password);
+		Token myToken = null;
+		try {
+			myToken = sbAuth.tokenGenerator(x500, password);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return myToken;
 	}
 
@@ -29,7 +38,16 @@ public class SCRSImpl implements SCRS {
 
 		DBCoordinator dbcoordinator = new DBCoordinator();
 		String sqlStr = SQLStrings.selectAllFromStudent(studentID);
-		List<ArrayList<Object>> objList = dbcoordinator.queryData(sqlStr);
+		List<ArrayList<Object>> objList = null;
+		try {
+			objList = dbcoordinator.queryData(sqlStr);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		if (objList == null || objList.isEmpty()) {
 			System.out.println(ErrorMessages.missingPersonalDataForUser);
 			return null; // CUSTOM EXCEPTION
@@ -54,7 +72,16 @@ public class SCRSImpl implements SCRS {
 
 		String sqlStr = SQLStrings.selectAllFromAdmin(adminID);
 
-		List<ArrayList<Object>> objList = dbcoordinator.queryData(sqlStr);
+		List<ArrayList<Object>> objList = null;
+		try {
+			objList = dbcoordinator.queryData(sqlStr);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		if (objList == null || objList.isEmpty()) {
 			System.out.println(ErrorMessages.missingPersonalDataForUser);
@@ -178,11 +205,11 @@ public class SCRSImpl implements SCRS {
 		}
 		return true;
 	}
-	boolean adminDropStudentRegisteredClass(ShibbolethAuth.Token token, int studentID, int courseID){
-		Admin admin = new Admin();
-		admin.adminDropStudentRegisteredClass(ShibbolethAuth.Token token, int studentID, int courseID);
-		return true;
-	}
+//	boolean adminDropStudentRegisteredClass(ShibbolethAuth.Token token, int studentID, int courseID){
+//		Admin admin = new Admin();
+//		admin.adminDropStudentRegisteredClass(ShibbolethAuth.Token token, int studentID, int courseID);
+//		return true;
+//	}
 
 
 	@Override
@@ -190,4 +217,12 @@ public class SCRSImpl implements SCRS {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public boolean adminDropStudentRegisteredClass(Token token, int studentID, int courseID) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	
 }
