@@ -43,24 +43,41 @@ public class SQLiteJDBC
               " GENDER         CHAR(15) CHECK (GENDER IN ('Male', 'Female', 'Transgender')), " + 
               " TITLE          CHAR(20) CHECK (TITLE IN ('Professor')), " +
               " SALARY         INT(1), " +
-              " DEPARTMENT     CHAR(50) NOT NULL CHECK (DEPARTMENT IN ('CS')))"; 
-      stmt.executeUpdate(createInstructorTableSql);
+              " DEPARTMENT     CHAR(50) NOT NULL CHECK (DEPARTMENT IN ('CS')))";
       
+      stmt.executeUpdate(createInstructorTableSql);
       String createCourseTableSql = "CREATE TABLE COURSE " +
+
               "(ID INT PRIMARY KEY     NOT NULL," +
-              " NAME      	   CHAR(50) NOT NULL, " + // Only contains alphabets
+
+              " NAME      	  CHAR(50) NOT NULL, " + // Only contains alphabets
+
               " CREDITS        INT NOT NULL CHECK (CREDITS > 0 AND CREDITS <= 4), " + 
+
               " CAPACITY       INT NOT NULL CHECK (CAPACITY > 0 AND CAPACITY <= 30), " +
+
+              " TERM           CHAR(20) NOT NULL, " +
+
               " FIRSTDAY       DATE NOT NULL, " + // Format: mm/dd/yyyy
+
               " LASTDAY        DATE NOT NULL, " + // Format: mm/dd/yyyy
+
               " CLASSBEGINTIME CHAR(10) NOT NULL, " + // Format: "hh:mm"
+
               " CLASSENDTIME   CHAR(10) NOT NULL, " + // Format: "hh:mm"
+
               " ROUTINES       CHAR(15) NOT NULL, " + // Format: "Tu, Fri"
+
               " LOCATION       CHAR(100) NOT NULL , " + // Format: E.g. East Bank KHKH3-301
+
               " TYPE           CHAR(20) NOT NULL CHECK (TYPE IN ('Seminar', 'Lecture')), " + // Seminar or Lecture
+
               " PREREQUISITE   TEXT, " +
+
               " DESCRIPTION    TEXT NOT NULL, " +
+
               " DEPARTMENT     CHAR(50) NOT NULL CHECK (DEPARTMENT IN ('CS')))"; 
+
       stmt.executeUpdate(createCourseTableSql);
 
       String createStudentCourseTableSql = "CREATE TABLE STUDENTANDCOURSE " +

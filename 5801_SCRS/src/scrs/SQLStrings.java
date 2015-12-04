@@ -25,12 +25,11 @@ public class SQLStrings {
 		if (classType != "") {
 			sqlStr += " AND type = " + classType;
 		}
-		//no instructor field
+		//TODO query instructor field
 		if (instructorName != "") {
-			sqlStr += " AND instructor = " + instructorName;
+			continue;
 		}
-		// TODO Auto-generated method stub
-		return null;
+		return sqlStr;
 	}
 
 	public static String selectHistoryFromStudentAndCourse(int studentID) {
